@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>WebRTC Controller</title>
+</head>
+<body>
+<h1>WebRTC Controller</h1>
+<h2>Join a Video Call</h2>
+<form id="videoForm">
+    <label for="roomId">Room ID:</label>
+    <input type="text" id="roomId" name="roomId" required />
+    <br />
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required />
+    <br />
+    <button type="submit">Join Video Call</button>
+</form>
+<br />
+<h2>Join an Audio Call</h2>
+<form id="audioForm">
+    <label for="roomId">Room ID:</label>
+    <input type="text" id="roomId" name="roomId" required />
+    <br />
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required />
+    <br />
+    <button type="submit">Join Audio Call</button>
+</form>
+<script>
+      const videoForm = document.getElementById("videoForm");
+      const audioForm = document.getElementById("audioForm");
+
+      videoForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const roomId = event.target.roomId.value;
+        const username = event.target.username.value;
+        const url = `/video?roomId=${roomId}&username=${username}`;
+        window.location.href = url;
+      });
+
+      audioForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const roomId = event.target.roomId.value;
+        const username = event.target.username.value;
+        const url = `/audio?roomId=${roomId}&username=${username}`;
+        window.location.href = url;
+      });
+    </script>
+</body>
+</html>
